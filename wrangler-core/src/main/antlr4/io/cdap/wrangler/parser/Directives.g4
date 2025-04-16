@@ -35,7 +35,13 @@ options {
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- */
+
+ * fragment BYTE_UNIT : 'B' | 'KB' | 'MB' | 'GB';
+ * fragment TIME_UNIT : 'ms' | 's' | 'm' | 'h';
+ * BYTE_SIZE : [0-9]+ ('.' [0-9]+)? BYTE_UNIT;
+ * TIME_DURATION : [0-9]+ ('.' [0-9]+)? TIME_UNIT;
+
+*/
 }
 
 /**
@@ -139,8 +145,8 @@ numberRange
  : Number ':' Number '=' value
  ;
 
-value
- : String | Number | Column | Bool
+value 
+ : BYTE_SIZE | TIME_DURATION | String | Number | Column | Bool
  ;
 
 ecommand
